@@ -1,0 +1,26 @@
+{
+  "name": "invitestory-ai",
+  "version": "0.1.0",
+  "private": true,
+  "description": "InviteStory AI Production System - Invitation production pipeline",
+  "scripts": {
+    "dev": "pnpm --filter api dev & pnpm --filter internal-ui dev",
+    "build": "pnpm -r run build",
+    "test": "pnpm -r run test",
+    "lint": "pnpm -r run lint",
+    "typecheck": "pnpm -r run typecheck",
+    "db:push": "pnpm --filter api db:push",
+    "db:studio": "pnpm --filter api db:studio"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "typescript": "^5.3.0",
+    "eslint": "^8.55.0",
+    "prettier": "^3.1.0"
+  },
+  "packageManager": "pnpm@9.0.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "lib": ["ES2022"],
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "paths": {
+      "@invitestory/contracts": ["packages/contracts/src"],
+      "@invitestory/ingest": ["packages/ingest/src"],
+      "@invitestory/extraction": ["packages/extraction/src"],
+      "@invitestory/templates": ["packages/templates/src"],
+      "@invitestory/compiler": ["packages/compiler/src"],
+      "@invitestory/agent-tasks": ["packages/agent-tasks/src"],
+      "@invitestory/sandbox": ["packages/sandbox/src"],
+      "@invitestory/browser-qa": ["packages/browser-qa/src"],
+      "@invitestory/visual-qa": ["packages/visual-qa/src"],
+      "@invitestory/model-router": ["packages/model-router/src"]
+    }
+  },
+  "exclude": ["node_modules", "dist", "apps", "templates", "fixtures", "migrations", "docs"]
+}
