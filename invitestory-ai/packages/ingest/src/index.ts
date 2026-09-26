@@ -1,2 +1,2 @@
-export * from "./zip-extractor";
-export * from "./whatsapp-parser";
+export * from "./zip-extractor.js";
+export * from "./whatsapp-parser.js";

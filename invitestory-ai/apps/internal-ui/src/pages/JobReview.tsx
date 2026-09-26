@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { QAReport, JobState, QAIssue, QASeverity } from "@invitestory/contracts";
+import { QAReport, JobState, QAIssue, QASeverity } from "lib/contracts";
 
 interface JobReviewProps {}
 

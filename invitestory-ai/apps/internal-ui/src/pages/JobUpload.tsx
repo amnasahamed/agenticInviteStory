@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { TemplateId } from "@invitestory/contracts";
-import { templateRegistry } from "@invitestory/templates";
+import { TemplateId } from "lib/contracts";
+import { templateRegistry } from "lib/templates";
 
 export function JobUpload() {
   const navigate = useNavigate();

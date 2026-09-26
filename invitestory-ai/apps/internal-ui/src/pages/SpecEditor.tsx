@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { InvitationSpec, SpecRevision, Component, Person, Venue, AssetRef, DesignRequest, CustomRequirement, Uncertainty, ExactFact } from "@invitestory/contracts";
+import { InvitationSpec, SpecRevision, Component, Person, Venue, AssetRef, DesignRequest, CustomRequirement, Uncertainty, ExactFact } from "lib/contracts";
 
 interface SpecEditorProps {}
 

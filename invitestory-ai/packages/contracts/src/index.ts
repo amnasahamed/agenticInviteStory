@@ -5,6 +5,7 @@ import { z } from "zod";
 // ============================================================================
 
 export const ISODateTime = z.string().datetime({ offset: true });
+export type ISODateTimeType = z.infer<typeof ISODateTime>;
 export const SHA256Hash = z.string().regex(/^[a-f0-9]{64}$/);
 export const ULID = z.string().regex(/^[0-9A-HJKMNP-TV-Z]{26}$/);
 

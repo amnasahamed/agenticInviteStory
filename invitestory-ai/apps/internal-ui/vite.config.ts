@@ -1,20 +1,31 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
+import alias from "@rollup/plugin-alias";
+
+const libAliases = [
+  { find: "lib/contracts", replacement: path.resolve(__dirname, "src/lib/contracts") },
+  { find: "lib/templates", replacement: path.resolve(__dirname, "src/lib/templates") },
+  { find: "lib/ingest", replacement: path.resolve(__dirname, "src/lib/ingest") },
+  { find: "lib/extraction", replacement: path.resolve(__dirname, "src/lib/extraction") },
+  { find: "lib/compiler", replacement: path.resolve(__dirname, "src/lib/compiler") },
+  { find: "lib/sandbox", replacement: path.resolve(__dirname, "src/lib/sandbox") },
+  { find: "lib/browser-qa", replacement: path.resolve(__dirname, "src/lib/browser-qa") },
+  { find: "lib/visual-qa", replacement: path.resolve(__dirname, "src/lib/visual-qa") },
+  { find: "lib/model-router", replacement: path.resolve(__dirname, "src/lib/model-router") },
+];
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    alias({ entries: libAliases })
+  ],
   resolve: {
-    alias: {
-      "@invitestory/contracts": path.resolve(__dirname, "../../packages/contracts/src"),
-      "@invitestory/ingest": path.resolve(__dirname, "../../packages/ingest/src"),
-      "@invitestory/extraction": path.resolve(__dirname, "../../packages/extraction/src"),
-      "@invitestory/templates": path.resolve(__dirname, "../../packages/templates/src"),
-      "@invitestory/compiler": path.resolve(__dirname, "../../packages/compiler/src"),
-      "@invitestory/sandbox": path.resolve(__dirname, "../../packages/sandbox/src"),
-      "@invitestory/browser-qa": path.resolve(__dirname, "../../packages/browser-qa/src"),
-      "@invitestory/visual-qa": path.resolve(__dirname, "../../packages/visual-qa/src"),
-      "@invitestory/model-router": path.resolve(__dirname, "../../packages/model-router/src")
+    alias: Object.fromEntries(libAliases.map(a => [a.find, a.replacement]))
+  },
+  build: {
+    rollupOptions: {
+      plugins: [alias({ entries: libAliases })]
     }
   },
   server: {

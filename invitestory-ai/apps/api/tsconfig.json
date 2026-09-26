@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "lib": ["ES2022"],
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "outDir": "./dist",
+    "baseUrl": ".",
+    "paths": {
+      "@invitestory/contracts": ["../packages/contracts/dist"],
+      "@invitestory/ingest": ["../packages/ingest/dist"],
+      "@invitestory/extraction": ["../packages/extraction/dist"],
+      "@invitestory/templates": ["../packages/templates/dist"],
+      "@invitestory/compiler": ["../packages/compiler/dist"],
+      "@invitestory/sandbox": ["../packages/sandbox/dist"],
+      "@invitestory/browser-qa": ["../packages/browser-qa/dist"],
+      "@invitestory/visual-qa": ["../packages/visual-qa/dist"],
+      "@invitestory/model-router": ["../packages/model-router/dist"]
+    }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}

@@ -21,15 +21,16 @@ import {
   MediaKind,
   ChatMessage,
   MediaAsset,
+  ISODateTimeType,
   createEvidenceRef,
   createDesignRequestId,
   createCustomRequirementId,
   createUncertaintyId
 } from "@invitestory/contracts";
-import { TranscriptionResult } from "./transcription";
-import { OCRResult, VisionAnalysisResult } from "./ocr-vision";
+import { TranscriptionResult } from "./transcription.js";
+import { OCRResult, VisionAnalysisResult } from "./ocr-vision.js";
 
-export type ISODateTime = string;
+export type ISODateTime = ISODateTimeType;
 
 export interface ExtractionContext {
   jobId: JobId;
@@ -196,7 +197,7 @@ function extractEvents(messages: ChatMessage[], ocrResults: Map<string, OCRResul
           startsAt: "2026-10-18T11:00:00+05:30",
           venueId: venueRef
         },
-        evidence: [`text:${match[0]}`]
+        evidence: [createEvidenceRef(`text:${match[0]}`)]
       });
     }
   }
@@ -238,7 +239,7 @@ function extractAssets(
       sha256: asset.sha256,
       purpose,
       crop: crop as any,
-      evidence: asset.relatedMessageIds.map(id => `msg:${id}`)
+      evidence: asset.relatedMessageIds.map(id => createEvidenceRef(`msg:${id}`))
     });
 
     if (purpose === "hero") heroAssigned = true;
@@ -297,13 +298,13 @@ function extractDesignRequests(
       const color = match[1].trim().toLowerCase();
       const validColors = ["maroon", "red", "blue", "green", "gold", "pink", "purple", "orange", "teal", "navy"];
       if (validColors.includes(color)) {
-        requests.push({
-          id: generateId("d"),
+requests.push({
+          id: createDesignRequestId(generateId("d")),
           kind: "color",
           target: "primary",
           value: color,
           referenceAssetId: null,
-evidence: [createEvidenceRef(`text:${match[0]}`)]
+          evidence: [createEvidenceRef(`text:${match[0]}`)]
         });
       }
     }
@@ -329,7 +330,7 @@ function extractCustomRequirements(messages: ChatMessage[]): CustomRequirement[]
           if (lower.includes("illustration") || lower.includes("drawing") || lower.includes("artwork") ||
               lower.includes("cartoon") || lower.includes("watercolor") || lower.includes("sketch")) {
             requirements.push({
-              id: generateId("c"),
+              id: createCustomRequirementId(generateId("c")),
               instruction,
               target: "hero-1" as ComponentId,
               status: lower.includes("illustration") || lower.includes("drawing") || lower.includes("artwork") ||
@@ -357,7 +358,7 @@ function extractUncertainties(
 
   if (!hasClearDate) {
     uncertainties.push({
-      id: generateId("u"),
+      id: createUncertaintyId(generateId("u")),
       field: "components.event-1.data.startsAt",
       reason: "No clear wedding date found in chat or transcripts",
       blocking: true,
@@ -370,7 +371,7 @@ function extractUncertainties(
 
   if (!hasClearVenue) {
     uncertainties.push({
-      id: generateId("u"),
+      id: createUncertaintyId(generateId("u")),
       field: "venues.venue-1.name",
       reason: "Venue not clearly specified",
       blocking: true,
@@ -465,7 +466,18 @@ export function extractInvitationSpec(context: ExtractionContext): ExtractionRes
       data: { assetId: assets.find(a => a.purpose === "music")?.id, autoplay: false },
       evidence: assets.filter(a => a.purpose === "music").flatMap(a => a.evidence)
     }
-  ].filter(c => c.data.personIds?.length || c.data.assetIds?.length || c.data.assetId || c.data.url);
+  ];
+
+  // Filter out components with no data
+  const filteredComponents = components.filter((c) => {
+    const data = c.data as Record<string, unknown>;
+    return Boolean(
+      (data.personIds as unknown[] | undefined)?.length ||
+      (data.assetIds as unknown[] | undefined)?.length ||
+      data.assetId ||
+      data.url
+    );
+  }) as Component[];
 
   const spec: InvitationSpec = {
     schemaVersion: "1.0",
@@ -480,7 +492,7 @@ export function extractInvitationSpec(context: ExtractionContext): ExtractionRes
     timeZone: "Asia/Kolkata",
     people,
     assets,
-    components,
+    components: filteredComponents,
     venues,
     designRequests,
     customRequirements,

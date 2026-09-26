@@ -86,7 +86,8 @@ export class InvitationCompiler {
       allChangedFiles = adapterResult.changedFiles;
       combinedDiff = adapterResult.diff;
       warnings.push(...adapterResult.warnings);
-    } catch (error) {
+    } catch (err) {
+      const error = err as Error;
       if (error instanceof TemplateAdapterError) {
         if (error.code === "UNSUPPORTED_COMPONENT") {
           warnings.push(`Unsupported component will need agent task: ${error.componentId}`);
@@ -94,7 +95,7 @@ export class InvitationCompiler {
           errors.push(`Template adapter error: ${error.message}`);
         }
       } else {
-        errors.push(`Unexpected adapter error: ${error}`);
+        errors.push(`Unexpected adapter error: ${error.message}`);
       }
     }
 

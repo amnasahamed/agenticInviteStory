@@ -11,7 +11,7 @@ import {
 import { PNG } from "pngjs";
 import pixelmatch from "pixelmatch";
 
-function createIssueId(prefix: string): string {
+function createIssueId(prefix: string): ReturnType<typeof createQAIssueId> {
   return createQAIssueId(`${prefix}_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`);
 }
 

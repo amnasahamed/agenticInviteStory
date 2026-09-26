@@ -14,7 +14,7 @@ import {
   VenueId,
   DesignRequest
 } from "@invitestory/contracts";
-import { templateRegistry, validateTemplateCapability } from "./registry";
+import { templateRegistry, validateTemplateCapability } from "./registry.js";
 
 export interface AdapterContext {
   spec: InvitationSpec;

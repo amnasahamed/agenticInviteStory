@@ -11,19 +11,29 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@invitestory/browser-qa": "workspace:*",
+    "@invitestory/compiler": "workspace:*",
     "@invitestory/contracts": "workspace:*",
+    "@invitestory/extraction": "workspace:*",
+    "@invitestory/ingest": "workspace:*",
+    "@invitestory/model-router": "workspace:*",
+    "@invitestory/sandbox": "workspace:*",
+    "@invitestory/templates": "workspace:*",
+    "@invitestory/visual-qa": "workspace:*",
+    "axios": "^1.6.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.0",
-    "zod": "^3.22.0",
-    "axios": "^1.6.0"
+    "zod": "^3.22.0"
   },
   "devDependencies": {
+    "@rollup/plugin-alias": "^6.0.0",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
     "@vitejs/plugin-react": "^4.2.0",
+    "eslint": "^8.55.0",
     "typescript": "^5.3.0",
     "vite": "^5.0.0",
-    "eslint": "^8.55.0"
+    "vite-plugin-resolve": "^2.5.2"
   }
 }

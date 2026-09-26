@@ -1,2 +1,2 @@
-export * from "./registry";
-export * from "./adapter";
+export * from "./registry.js";
+export * from "./adapter.js";

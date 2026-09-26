@@ -15,16 +15,16 @@
     "outDir": "./dist",
     "baseUrl": ".",
     "paths": {
-      "@invitestory/contracts": ["../contracts/src"],
-      "@invitestory/ingest": ["../ingest/src"],
-      "@invitestory/extraction": ["../extraction/src"],
-      "@invitestory/templates": ["../templates/src"],
-      "@invitestory/compiler": ["../compiler/src"],
-      "@invitestory/agent-tasks": ["../agent-tasks/src"],
-      "@invitestory/sandbox": ["../sandbox/src"],
-      "@invitestory/browser-qa": ["../browser-qa/src"],
-      "@invitestory/visual-qa": ["../visual-qa/src"],
-      "@invitestory/model-router": ["../model-router/src"]
+      "@invitestory/contracts": ["../contracts/dist"],
+      "@invitestory/ingest": ["../ingest/dist"],
+      "@invitestory/extraction": ["../extraction/dist"],
+      "@invitestory/templates": ["../templates/dist"],
+      "@invitestory/compiler": ["../compiler/dist"],
+      "@invitestory/agent-tasks": ["../agent-tasks/dist"],
+      "@invitestory/sandbox": ["../sandbox/dist"],
+      "@invitestory/browser-qa": ["../browser-qa/dist"],
+      "@invitestory/visual-qa": ["../visual-qa/dist"],
+      "@invitestory/model-router": ["../model-router/dist"]
     }
   },
   "include": ["src/**/*"],

@@ -1,8 +1,8 @@
 // Transcription service interface and implementations
 
-import { MediaAsset, AssetId } from "@invitestory/contracts";
+import { MediaAsset, AssetId, ISODateTimeType } from "@invitestory/contracts";
 
-export type ISODateTime = string;
+export type ISODateTime = ISODateTimeType;
 
 export interface TranscriptionSegment {
   startSec: number;

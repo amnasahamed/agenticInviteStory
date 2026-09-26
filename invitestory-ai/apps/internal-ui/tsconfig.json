@@ -12,22 +12,23 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "strict": true,
+    "noImplicitAny": false,
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": true,
     "baseUrl": ".",
     "paths": {
-      "@invitestory/contracts": ["../../packages/contracts/src"],
-      "@invitestory/ingest": ["../../packages/ingest/src"],
-      "@invitestory/extraction": ["../../packages/extraction/src"],
-      "@invitestory/templates": ["../../packages/templates/src"],
-      "@invitestory/compiler": ["../../packages/compiler/src"],
-      "@invitestory/sandbox": ["../../packages/sandbox/src"],
-      "@invitestory/browser-qa": ["../../packages/browser-qa/src"],
-      "@invitestory/visual-qa": ["../../packages/visual-qa/src"],
-      "@invitestory/model-router": ["../../packages/model-router/src"]
+      "lib/contracts": ["src/lib/contracts"],
+      "lib/templates": ["src/lib/templates"],
+      "lib/ingest": ["src/lib/ingest"],
+      "lib/extraction": ["src/lib/extraction"],
+      "lib/compiler": ["src/lib/compiler"],
+      "lib/sandbox": ["src/lib/sandbox"],
+      "lib/browser-qa": ["src/lib/browser-qa"],
+      "lib/visual-qa": ["src/lib/visual-qa"],
+      "lib/model-router": ["src/lib/model-router"]
     }
   },
-  "include": ["src"],
+  "include": ["src", "src/lib/**/*"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

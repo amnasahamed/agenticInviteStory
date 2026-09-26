@@ -78,9 +78,33 @@ importers:
 
   apps/internal-ui:
     dependencies:
+      '@invitestory/browser-qa':
+        specifier: workspace:*
+        version: link:../../packages/browser-qa
+      '@invitestory/compiler':
+        specifier: workspace:*
+        version: link:../../packages/compiler
       '@invitestory/contracts':
         specifier: workspace:*
         version: link:../../packages/contracts
+      '@invitestory/extraction':
+        specifier: workspace:*
+        version: link:../../packages/extraction
+      '@invitestory/ingest':
+        specifier: workspace:*
+        version: link:../../packages/ingest
+      '@invitestory/model-router':
+        specifier: workspace:*
+        version: link:../../packages/model-router
+      '@invitestory/sandbox':
+        specifier: workspace:*
+        version: link:../../packages/sandbox
+      '@invitestory/templates':
+        specifier: workspace:*
+        version: link:../../packages/templates
+      '@invitestory/visual-qa':
+        specifier: workspace:*
+        version: link:../../packages/visual-qa
       axios:
         specifier: ^1.6.0
         version: 1.20.0
@@ -97,6 +121,9 @@ importers:
         specifier: ^3.22.0
         version: 3.25.76
     devDependencies:
+      '@rollup/plugin-alias':
+        specifier: ^6.0.0
+        version: 6.0.0(rollup@4.63.5)
       '@types/react':
         specifier: ^18.2.0
         version: 18.3.31
@@ -115,6 +142,9 @@ importers:
       vite:
         specifier: ^5.0.0
         version: 5.4.21(@types/node@20.19.43)
+      vite-plugin-resolve:
+        specifier: ^2.5.2
+        version: 2.5.2
 
   packages/browser-qa:
     dependencies:
@@ -178,12 +208,6 @@ importers:
       '@invitestory/contracts':
         specifier: workspace:*
         version: link:../contracts
-      '@invitestory/ingest':
-        specifier: workspace:*
-        version: link:../ingest
-      zod:
-        specifier: ^3.22.0
-        version: 3.25.76
     devDependencies:
       eslint:
         specifier: ^8.55.0
@@ -206,6 +230,9 @@ importers:
       yauzl:
         specifier: ^2.10.0
         version: 2.10.0
+      zod:
+        specifier: ^3.22.0
+        version: 3.25.76
     devDependencies:
       '@types/node':
         specifier: ^20.10.0
@@ -911,6 +938,15 @@ packages:
   '@rolldown/pluginutils@1.0.0-beta.27':
     resolution: {integrity: sha512-+d0F4MKMCbeVUJwG96uQ4SgAznZNSq93I3V+9NHA4OpvqG8mRCpGdKmK8l/dl02h2CCDHwW2FqilnTyDcAnqjA==}
 
+  '@rollup/plugin-alias@6.0.0':
+    resolution: {integrity: sha512-tPCzJOtS7uuVZd+xPhoy5W4vThe6KWXNmsFCNktaAh5RTqcLiSfT4huPQIXkgJ6YCOjJHvecOAzQxLFhPxKr+g==}
+    engines: {node: '>=20.19.0'}
+    peerDependencies:
+      rollup: '>=4.0.0'
+    peerDependenciesMeta:
+      rollup:
+        optional: true
+
   '@rollup/rollup-android-arm-eabi@4.63.5':
     resolution: {integrity: sha512-J25QJU+B78T4FhhBsNpLJyVWOi31mwtpcMwywHmOKH65Q9IWGA81gPj+dnwlhU8wktVriYE+tFAaQgrnJRzAZg==}
     cpu: [arm]
@@ -1580,6 +1616,9 @@ packages:
     resolution: {integrity: sha512-+bT2uH4E5LGE7h/n3evcS/sQlJXCpIp6ym8OWJ5eV6+67Dsql/LaaT7qJBAt2rzfoa/5QBGBhxDix1dMt2kQKQ==}
     engines: {node: '>= 0.8.0'}
 
+  lib-esm@0.4.2:
+    resolution: {integrity: sha512-VGqaEGuryUbT7FLGxXg46nrSzkhLzyk+JQjYoYEORH5UtdIu3yf6DCOqh65FOR3bWOHHGINQH/vR5YGGIFBgJw==}
+
   local-pkg@0.5.1:
     resolution: {integrity: sha512-9rrA30MRRP3gBD3HTGnC6cDFpaE1kVDWxWgqWJUN0RvDNAo+Nz/9GxB+nHOH0ifbVFy0hSA1V6vFDvnx54lTEQ==}
     engines: {node: '>=14'}
@@ -1987,6 +2026,9 @@ packages:
     resolution: {integrity: sha512-YAXkfvGtuTzwWbDSACdJSg4A4DZiAqckWe90Zapc/sEX3XvHcw1NdurM/6od8J207tSDqNbSsgdCacBgvJKFuA==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
+
+  vite-plugin-resolve@2.5.2:
+    resolution: {integrity: sha512-8twv20M+KIMxkZzAoF1eAUxxxB56NxKdYjIJ309A/30lZ3GAqgiAeGFjVVlLLEpeAcbAwfl9p7jztsQEw7C3Jg==}
 
   vite@5.4.21:
     resolution: {integrity: sha512-o5a9xKjbtuhY6Bi5S3+HvbRERmouabWbyUcpXXUA1u+GNUKoROi9byOJ8M0nHbHYHkYICiMlqxkg1KkYmm25Sw==}
@@ -2567,6 +2609,10 @@ snapshots:
   '@remix-run/router@1.23.4': {}
 
   '@rolldown/pluginutils@1.0.0-beta.27': {}
+
+  '@rollup/plugin-alias@6.0.0(rollup@4.63.5)':
+    optionalDependencies:
+      rollup: 4.63.5
 
   '@rollup/rollup-android-arm-eabi@4.63.5':
     optional: true
@@ -3258,6 +3304,8 @@ snapshots:
       prelude-ls: 1.2.1
       type-check: 0.4.0
 
+  lib-esm@0.4.2: {}
+
   local-pkg@0.5.1:
     dependencies:
       mlly: 1.8.2
@@ -3678,6 +3726,10 @@ snapshots:
       - sugarss
       - supports-color
       - terser
+
+  vite-plugin-resolve@2.5.2:
+    dependencies:
+      lib-esm: 0.4.2
 
   vite@5.4.21(@types/node@20.19.43):
     dependencies:
